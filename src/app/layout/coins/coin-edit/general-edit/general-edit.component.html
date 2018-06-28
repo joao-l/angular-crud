@@ -1,0 +1,99 @@
+<p-panel header="General" [style]="{'margin-top': '20px'}">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Nome:</label>
+      <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'name')" [ngModel]="coin.name">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Tipo:</label>
+      <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'itemType')" [ngModel]="coin.itemType">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Sub tipo:</label>
+      <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'subType')" [ngModel]="coin.subType">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Currency:</label>
+      <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'currency')" [ngModel]="coin.currency">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Face Word:</label>
+      <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'faceWord')" [ngModel]="coin.faceWord">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Face Figure:</label>
+      <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'faceFigure')" [ngModel]="coin.faceFigure">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Data Desmonetização:</label>
+      <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'demonetizationDate')" [ngModel]="coin.demonetizationDate">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Alinhamento:</label>
+      <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'alignment')" [ngModel]="coin.alignment">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Desmonetizado:</label>
+      <br>
+      <p-inputSwitch onLabel="Sim" offLabel="Não" (ngModelChange)="onChange($event, 'isDemonetized')" [ngModel]="coin.isDemonetized">
+      </p-inputSwitch>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Comentario:</label>
+      <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'comment')" [ngModel]="coin.comment">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Evento Comemorativo:</label>
+      <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'commemoratedEvent')" [ngModel]="coin.commemoratedEvent">
+    </div>
+  </div>
+</p-panel>
+
+<p-growl [value]="msgs"></p-growl>
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Geral</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cancelado')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Deseja continuar com as alterações ?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="save('Salvo');c()">Confirmar</button>
+  </div>
+</ng-template>
+
+<button class="btn btn-md btn-primary" style="margin-top: 10px;float: right" (click)="open(content)">Salvar</button>
+<button class="btn btn-md btn-outline-dark" style="margin-top: 10px;margin-right: 5px;float: right" (click)="cancel()">Cancelar</button>

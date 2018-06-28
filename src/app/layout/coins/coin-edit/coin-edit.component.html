@@ -1,0 +1,47 @@
+<div [@routerTransition]>
+  <app-page-header heading="Moedas" [icon]="'fa fa-circle-o-notch'"></app-page-header>
+
+  <ngb-tabset>
+    <ngb-tab title="Geral">
+      <ng-template ngbTabContent>
+        <app-general-edit [coin]="coin"></app-general-edit>
+      </ng-template>
+    </ngb-tab>
+
+    <ngb-tab title="Características">
+      <ng-template ngbTabContent>
+        <app-features-edit [features]="coin.features" [id]="coin._id"></app-features-edit>
+      </ng-template>
+    </ngb-tab>
+
+    <ngb-tab title="Publicação">
+      <ng-template ngbTabContent>
+        <app-publication-edit [publication]="coin.publication" [id]="coin._id"></app-publication-edit>
+      </ng-template>
+    </ngb-tab>
+
+    <ngb-tab title="Remoção">
+      <ng-template ngbTabContent>
+        <app-removed-edit [removed]="coin.removed" [id]="coin._id"></app-removed-edit>
+      </ng-template>
+    </ngb-tab>
+
+    <ngb-tab title="Emissor">
+      <ng-template ngbTabContent>
+        <app-issuer-edit [issuer]="coin.issuer" [id]="coin._id"></app-issuer-edit>
+      </ng-template>
+    </ngb-tab>
+
+    <ngb-tab title="Emissão">
+      <ng-template ngbTabContent>
+        <app-emission-edit [emissions]="coin.emissionInfo" [id]="coin._id"></app-emission-edit>
+      </ng-template>
+    </ngb-tab>
+
+    <ngb-tab title="Sides">
+      <ng-template ngbTabContent>
+        <app-side-edit [sides]="coin.side" [id]="coin._id"></app-side-edit>
+      </ng-template>
+    </ngb-tab>
+  </ngb-tabset>
+</div>

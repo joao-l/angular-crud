@@ -1,0 +1,55 @@
+<div [@routerTransition]>
+  <app-page-header heading="Usuarios" icon="fa fa-user-o"></app-page-header>
+
+  <div class="ui-widget-header" style="padding:10px 10px;border-bottom: 0 none">
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1"><i class="fa fa-search"></i></span>
+      <input type="text" class="form-control form-control-sm" placeholder="Digite nome do usuario para pesquisa:" #gb>
+    </div>
+  </div>
+
+  <p-dataTable 
+    [value]="users" 
+    selectionMode="single" 
+    [(selection)]="selectedUser" 
+    (onRowDblclick)="onRowDblclick($event)"
+    [paginator]="true" 
+    rows="10" 
+    [responsive]="true" 
+    [globalFilter]="gb" 
+    [resizableColumns]="true">
+
+    <p-header><b>Usuarios Collectgram</b></p-header>
+    <p-column field="name" header="Nome" [sortable]="true" [style]="{'width':'20%'}"></p-column>
+    <p-column field="email" header="Email" [sortable]="true" [style]="{'width':'20%'}"></p-column>
+
+    <p-column field="active" header="Ativo" [sortable]="true" [style]="{'width':'10%'}">
+      <ng-template let-col let-user="rowData" let-ri="rowIndex" pTemplate="body">
+        <div style="text-align:center">
+          <span *ngIf="user[col.field];else elseTemplate">
+            <i class="fa fa-chevron-down" aria-hidden="true"></i>&nbsp;Sim
+          </span>
+        </div>
+      </ng-template>
+      <ng-template #elseTemplate><i class="fa fa-times" aria-hidden="true"></i>&nbsp;Não</ng-template>
+    </p-column>
+
+  </p-dataTable>
+
+  <p-dialog 
+    [header]="user.name" 
+    baseZIndex="1000" 
+    responsive="true" 
+    width="600" 
+    [(visible)]="displayDialog" 
+    [responsive]="true"
+    showEffect="fade" 
+    [modal]="true" 
+    (onHide)="onHide()"
+    appendTo="body">
+    <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="user">
+      <app-user-edit [user]="user"></app-user-edit>
+    </div>
+  </p-dialog>
+
+</div>

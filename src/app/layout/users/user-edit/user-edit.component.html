@@ -1,0 +1,136 @@
+<div class="form-row">
+  <div class="form-group col-md-12">
+    <label>Nome:</label>
+    <input type="text" 
+      class="form-control form-control-sm" 
+      placeholder="Nome" 
+      (ngModelChange)="onChange($event, 'name')"
+      [ngModel]="user.name">
+  </div>
+
+  <div class="form-group col-md-12">
+    <label>Apelido:</label>
+    <input type="text" 
+      class="form-control form-control-sm" 
+      placeholder="Apelido" 
+      (ngModelChange)="onChange($event, 'username')"
+      [ngModel]="user.username">
+  </div>
+
+  <div class="form-group col-md-12">
+    <label>Email:</label>
+    <input type="text" 
+      class="form-control form-control-sm" 
+      placeholder="Email" 
+      [ngModel]="user.email"
+      (ngModelChange)="onChange($event, 'email')">
+  </div>
+
+  <div class="form-group col-md-12">
+    <label>Ativo:</label>
+    <br>
+    <p-inputSwitch 
+      onLabel="Sim" 
+      offLabel="Não" 
+      (ngModelChange)="onChange($event, 'active')"
+      [ngModel]="user.active">
+    </p-inputSwitch>
+  </div>
+
+  <div class="form-group col-md-12">
+    <label>Codigo de Ativação:</label>
+    <input type="text" 
+      class="form-control form-control-sm" 
+      placeholder="Codigo de Ativação" 
+      (ngModelChange)="onChange($event, 'activationCode')"
+      [ngModel]="user.activationCode">
+  </div>
+
+  <div class="form-group col-md-12">
+    <label>Localidade:</label>
+    <input type="text" 
+      class="form-control form-control-sm" 
+      placeholder="Localidade" 
+      (ngModelChange)="onChange($event, 'locale')"
+      [ngModel]="user.locale">
+  </div>
+
+  <div class="form-group col-md-12">
+    <label>Bio:</label>
+    <input type="text" 
+      class="form-control form-control-sm" 
+      placeholder="Bio" 
+      (ngModelChange)="onChange($event, 'bio')"
+      [ngModel]="user.bio">
+  </div>
+
+  <div class="form-group col-md-12">
+    <label>Sexo:</label>
+    <input type="text" 
+      class="form-control form-control-sm" 
+      placeholder="Sexo" 
+      (ngModelChange)="onChange($event, 'genre')"
+      [ngModel]="user.genre">
+  </div>
+
+  <div class="form-group col-md-12">
+    <label>País:</label>
+    <input type="text" 
+      class="form-control form-control-sm" 
+      placeholder="País" 
+      (ngModelChange)="onChange($event, 'countryName')"
+      [ngModel]="user.countryName">
+  </div>
+
+  <div class="form-group col-md-12">
+    <label>Data de Entrada:</label>
+    <input type="text" 
+      class="form-control form-control-sm" 
+      placeholder="Data de Entrada" 
+      (ngModelChange)="onChange($event, 'signupDate')"
+      [ngModel]="user.signupDate">
+  </div>
+
+  <div class="form-group col-md-12">
+    <label>Data de Saida:</label>
+    <input type="text" 
+      class="form-control form-control-sm" 
+      placeholder="Data de Saida" 
+      (ngModelChange)="onChange($event, 'takeoutDate')"
+      [ngModel]="user.takeoutDate">
+  </div>
+
+  <div class="form-group col-md-12">
+    <label>Data de Ativação:</label>
+    <input type="text" 
+      class="form-control form-control-sm" 
+      placeholder="Data de Ativação" 
+      (ngModelChange)="onChange($event, 'activationDate')"
+      [ngModel]="user.activationDate">
+  </div>
+
+  <div class="form-group col-md-12">
+    <label>Data de Criação:</label>
+    <input type="text" 
+      class="form-control form-control-sm" 
+      placeholder="Data de Criação" 
+      (ngModelChange)="onChange($event, 'createdDate')"
+      [ngModel]="user.createdDate">
+  </div>
+  <div class="form-group col-md-12">
+    <label>Data de Nascimento:</label>
+    <input type="text" 
+      class="form-control form-control-sm" 
+      placeholder="Data de Nascimento" 
+      (ngModelChange)="onChange($event, 'birthdate')"
+      [ngModel]="user.birthdate">
+  </div>
+</div>
+
+<p-growl [value]="msgs"></p-growl>
+<p-confirmDialog #dg>
+  <p-footer>
+    <button class="btn btn-primary" (click)="dg.accept()">Salvar</button>
+  </p-footer>
+</p-confirmDialog>
+<button class="btn btn-primary" (click)="save()">Confirmar</button>

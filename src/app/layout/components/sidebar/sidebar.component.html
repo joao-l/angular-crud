@@ -1,0 +1,23 @@
+<nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
+  <ul class="list-group">
+    <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
+      <i class="fa fa-home"></i>&nbsp;{{ 'Pagina Inicial' | translate }}
+    </a>
+
+    <div class="nested-menu">
+      <a routerLink="/users" [routerLinkActive]="['router-link-active']" class="list-group-item" (click)="gotoUsers()">
+        <span>
+          <i class="fa fa-user-o"></i>&nbsp; {{ 'Usuarios' | translate }}
+        </span>
+      </a>
+    </div>
+
+    <div class="nested-menu">
+      <a routerLink="/coins" [routerLinkActive]="['router-link-active']" class="list-group-item" (click)="gotoCoins()">
+        <span>
+          <i class="fa fa-arrow-circle-o-right"></i>&nbsp; {{ 'Moedas' | translate }}
+        </span>
+      </a>
+    </div>
+  </ul>
+</nav>

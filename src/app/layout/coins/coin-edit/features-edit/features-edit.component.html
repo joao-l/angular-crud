@@ -1,0 +1,55 @@
+<p-panel header="Features" [style]="{'margin-top': '20px'}">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Material:</label>
+      <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'material')" [(ngModel)]="features.material">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Peso:</label>
+      <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'weight')" [(ngModel)]="features.weight">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Diametro:</label>
+      <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'diameter')" [(ngModel)]="features.diameter">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Espessura:</label>
+      <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'thickness')" [(ngModel)]="features.thickness">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Forma:</label>
+      <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'shape')" [(ngModel)]="features.shape">
+    </div>
+  </div>
+</p-panel>
+
+<p-growl [value]="msgs"></p-growl>
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Características</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cancelado')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Deseja continuar com as alterações ?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="save('Salvo');c()">Salvar</button>
+  </div>
+</ng-template>
+
+<button class="btn btn-md btn-primary" style="margin-top: 10px;float: right" (click)="open(content)">Salvar</button>
+<button class="btn btn-md btn-outline-dark" style="margin-top: 10px;margin-right: 5px;float: right" (click)="cancel()">Cancelar</button>

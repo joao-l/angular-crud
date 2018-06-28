@@ -1,0 +1,30 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad">
+  <div class="ui-grid-row">
+    <div class="ui-grid-col-12 label">
+      <b>País: </b>{{issuer.countryName}}
+    </div>
+  </div>
+</div>
+<div class="ui-grid ui-grid-responsive ui-grid-pad">
+  <div class="ui-grid-row">
+    <div class="ui-grid-col-12 label">
+      <b>País Emissor: </b>{{issuer.issuerName}}
+    </div>
+  </div>
+</div>
+<div class="ui-grid ui-grid-responsive ui-grid-pad">
+  <div class="ui-grid-row">
+    <div class="ui-grid-col-12 label">
+      <b>Codigo: </b>{{issuer.alpha2Code}}
+    </div>
+  </div>
+</div>
+<div class="ui-grid ui-grid-responsive ui-grid-pad">
+  <div class="ui-grid-row">
+    <div class="ui-grid-col-12 label">
+      <b>Ativo: </b>
+      <span *ngIf="issuer.isActive;else elseTemplate">Sim</span>
+      <ng-template #elseTemplate>Não</ng-template>
+    </div>
+  </div>
+</div>

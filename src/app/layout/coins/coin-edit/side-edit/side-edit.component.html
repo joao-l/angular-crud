@@ -1,0 +1,115 @@
+<p-panel header="Side - Index: {{i}}" *ngFor="let side of sides; let i = index" [style]="{'margin-top': '20px'}" [toggleable]="true">
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Engraver:</label>
+      <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'engraver')" [(ngModel)]="side.engraver">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Lettering:</label>
+      <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'lettering')" [(ngModel)]="side.lettering">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Lettering Translation:</label>
+      <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'letteringTranslation')" [(ngModel)]="side.letteringTranslation">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Descrição:</label>
+      <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'description')" [(ngModel)]="side.description">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Detalhe:</label>
+      <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'detail')" [(ngModel)]="side.detail">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Primeiro:</label>
+      <br>
+      <p-inputSwitch onLabel="Sim" offLabel="Não" (ngModelChange)="onChange($event, 'isFirst')" [(ngModel)]="side.isFirst">
+      </p-inputSwitch>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <p-panel>
+        <p-header>
+          <div class="ui-helper-clearfix">
+            <span class="ui-panel-title" style="font-size:16px;display:inline-block;margin-top:6px">Small Size</span>
+            <p-splitButton [style]="{'float':'right'}" label="Opções" (onDropdownClick)="saveImgOptions('small', i)" [model]="items"></p-splitButton>
+          </div>
+        </p-header>
+        <img [src]="(side.officialImage.smallSize | image) | async" style="max-height: 150px;" *ngIf="side.officialImage.smallSize">
+      </p-panel>
+    </div>
+
+    <div class="form-group col-md-3">
+      <p-panel>
+        <p-header>
+          <div class="ui-helper-clearfix">
+            <span class="ui-panel-title" style="font-size:16px;display:inline-block;margin-top:6px">Medium Size</span>
+            <p-splitButton [style]="{'float':'right'}" label="Opções" (onDropdownClick)="saveImgOptions('medium', i)" [model]="items"></p-splitButton>
+          </div>
+        </p-header>
+        <img [src]="(side.officialImage.mediumSize | image) | async" style="max-height: 150px;" *ngIf="side.officialImage.mediumSize">
+      </p-panel>
+    </div>
+
+    <div class="form-group col-md-3">
+      <p-panel>
+        <p-header>
+          <div class="ui-helper-clearfix">
+            <span class="ui-panel-title" style="font-size:16px;display:inline-block;margin-top:6px">Large Size</span>
+            <p-splitButton [style]="{'float':'right'}" label="Opções" (onDropdownClick)="saveImgOptions('large', i)" [model]="items"></p-splitButton>
+          </div>
+        </p-header>
+        <img [src]="(side.officialImage.largeSize | image) | async" style="max-height: 150px;" *ngIf="side.officialImage.largeSize">
+      </p-panel>
+    </div>
+
+    <div class="form-group col-md-3">
+      <p-panel>
+        <p-header>
+          <div class="ui-helper-clearfix">
+            <span class="ui-panel-title" style="font-size:16px;display:inline-block;margin-top:6px">Full Size</span>
+            <p-splitButton [style]="{'float':'right'}" label="Opções" (onDropdownClick)="saveImgOptions('full', i)" [model]="items"></p-splitButton>
+          </div>
+        </p-header>
+        <img [src]="(side.officialImage.fullSize | image) | async" style="max-height: 150px;" *ngIf="side.officialImage.fullSize">
+      </p-panel>
+    </div>
+  </div>
+</p-panel>
+
+<p-growl [value]="msgs"></p-growl>
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Side</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cancelado')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Deseja continuar com as alterações ?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="save('Salvo');c()">Salvar</button>
+  </div>
+</ng-template>
+
+<button class="btn btn-md btn-primary" style="margin-top: 10px;float: right" (click)="open(content)">Salvar</button>
+<button class="btn btn-md btn-outline-dark" style="margin-top: 10px;margin-right: 5px;float: right" (click)="cancel()">Cancelar</button>

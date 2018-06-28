@@ -1,0 +1,79 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad">
+  <div class="ui-grid-row">
+    <div class="ui-grid-col-12 label">
+      <b>Nome: </b>{{coin.name}}
+    </div>
+  </div>
+</div>
+<div class="ui-grid ui-grid-responsive ui-grid-pad">
+  <div class="ui-grid-row">
+    <div class="ui-grid-col-12 label">
+      <b>Tipo: </b>{{coin.itemType}}
+    </div>
+  </div>
+</div>
+<div class="ui-grid ui-grid-responsive ui-grid-pad">
+  <div class="ui-grid-row">
+    <div class="ui-grid-col-12 label">
+      <b>Sub Tipo: </b>{{coin.subType}}
+    </div>
+  </div>
+</div>
+<div class="ui-grid ui-grid-responsive ui-grid-pad">
+  <div class="ui-grid-row">
+    <div class="ui-grid-col-12 label">
+      <b>Currency: </b>{{coin.currency}}
+    </div>
+  </div>
+</div>
+<div class="ui-grid ui-grid-responsive ui-grid-pad">
+  <div class="ui-grid-row">
+    <div class="ui-grid-col-12 label">
+      <b>Face Word: </b>{{coin.faceWord}}
+    </div>
+  </div>
+</div>
+<div class="ui-grid ui-grid-responsive ui-grid-pad">
+  <div class="ui-grid-row">
+    <div class="ui-grid-col-12 label">
+      <b>Face Figure: </b>{{coin.faceFigure}}
+    </div>
+  </div>
+</div>
+<div class="ui-grid ui-grid-responsive ui-grid-pad">
+  <div class="ui-grid-row">
+    <div class="ui-grid-col-12 label">
+      <b>Alinhamento: </b>{{coin.alignment}}
+    </div>
+  </div>
+</div>
+<div class="ui-grid ui-grid-responsive ui-grid-pad">
+  <div class="ui-grid-row">
+    <div class="ui-grid-col-12 label">
+      <b>Comentario: </b>{{coin.comment}}
+    </div>
+  </div>
+</div>
+<div class="ui-grid ui-grid-responsive ui-grid-pad">
+  <div class="ui-grid-row">
+    <div class="ui-grid-col-12 label">
+      <b>Evento de Comemoração: </b>{{coin.commemoratedEvent}}
+    </div>
+  </div>
+</div>
+<div class="ui-grid ui-grid-responsive ui-grid-pad">
+  <div class="ui-grid-row">
+    <div class="ui-grid-col-12 label">
+      <b>Data Desmonetização: </b>{{coin.demonetizationDate}}
+    </div>
+  </div>
+</div>
+<div class="ui-grid ui-grid-responsive ui-grid-pad">
+  <div class="ui-grid-row">
+    <div class="ui-grid-col-12 label">
+      <b>Desmonetizado: </b>
+      <span *ngIf="coin.isDemonetized;else elseTemplate">Sim</span>
+      <ng-template #elseTemplate>Não</ng-template>
+    </div>
+  </div>
+</div>

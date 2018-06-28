@@ -1,0 +1,32 @@
+<div class="ui-grid ui-grid-responsive ui-fluid" style="font-size:12px">
+  <p-accordion [multiple]="true">
+    <p-accordionTab header="Imagem Oficial">
+      <app-side-detail [sides]="coin.side"></app-side-detail>
+    </p-accordionTab>
+
+    <p-accordionTab header="Geral">
+      <app-general-detail [coin]="coin"></app-general-detail>
+    </p-accordionTab>
+
+    <p-accordionTab header="Caracteristicas">
+      <app-features-detail [features]="coin.features"></app-features-detail>
+    </p-accordionTab>
+
+    <p-accordionTab header="Emissões">
+      <app-emission-detail [emissions]="coin.emissionInfo"></app-emission-detail>
+    </p-accordionTab>
+
+    <p-accordionTab header="Emissor">
+      <app-issuer-detail [issuer]="coin.issuer"></app-issuer-detail>
+    </p-accordionTab>
+
+    <p-accordionTab header="Publicação">
+      <app-publication-detail [publication]="coin.publication"></app-publication-detail>
+    </p-accordionTab>
+
+    <p-accordionTab header="Remoção">
+      <app-removed-detail [removed]="coin.removed"></app-removed-detail>
+    </p-accordionTab>
+  </p-accordion>
+
+</div>

@@ -1,0 +1,158 @@
+<p-dialog header="Nova Emissão" [(visible)]="display" modal="modal" width="700" [responsive]="true">
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <label>Ano de emissão:</label>
+      <input type="text" class="form-control form-control-sm" [(ngModel)]="newEmissionInfo.year">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <label>Primeiro Ano:</label>
+      <input type="text" class="form-control form-control-sm" [(ngModel)]="newEmissionInfo.firstYear">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <label>Último Ano:</label>
+      <input type="text" class="form-control form-control-sm" [(ngModel)]="newEmissionInfo.lastYear">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <label>Calendario:</label>
+      <input type="text" class="form-control form-control-sm" [(ngModel)]="newEmissionInfo.calendar">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <label>Raridade:</label>
+      <input type="text" class="form-control form-control-sm" [(ngModel)]="newEmissionInfo.rarity">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <label>Quantidade:</label>
+      <input type="text" class="form-control form-control-sm" [(ngModel)]="newEmissionInfo.quantity">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <label>Comentario:</label>
+      <input type="text" class="form-control form-control-sm" [(ngModel)]="newEmissionInfo.comment">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <label>Marca:</label>
+      <input type="text" class="form-control form-control-sm" [(ngModel)]="newEmissionInfo.mark">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <label>Contra Marca:</label>
+      <input type="text" class="form-control form-control-sm" [(ngModel)]="newEmissionInfo.counterMark">
+    </div>
+  </div>
+
+  <p-footer>
+    <button type="button" pButton icon="fa-check" (click)="saveNewEmission()" label="Adicionar"></button>
+    <button type="button" pButton icon="fa-close" (click)="display=false" label="Cancelar"></button>
+  </p-footer>
+</p-dialog>
+
+<button type="button" (click)="showDialog()" pButton icon="fa-external-link-square" label="Adicionar Emissão" style="margin-top: 20px"></button>
+
+<div *ngFor="let emission of emissions; let i = index">
+  <p-panel [style]="{'margin-top': '20px'}" [toggleable]="false">
+    <p-header>
+      <div class="ui-helper-clearfix">
+        <span class="ui-panel-title" style="font-size:16px;display:inline-block;margin-top:6px">Emissioninfo - Index: {{i}}</span>
+        <p-splitButton [style]="{'float':'right'}" label="Opções" (onDropdownClick)="onEmissionAction('action', i)" [model]="items"></p-splitButton>
+      </div>
+    </p-header>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Ano de emissão:</label>
+        <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'emission', i)" [(ngModel)]="emission.year">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Calendario:</label>
+        <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'emission', i)" [(ngModel)]="emission.calendar">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Calendario:</label>
+        <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'emission', i)" [(ngModel)]="emission.quantity">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Mark:</label>
+        <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'emission', i)" [(ngModel)]="emission.mark">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Country Mark:</label>
+        <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'emission', i)" [(ngModel)]="emission.counterMark">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Comentario:</label>
+        <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'emission', i)" [(ngModel)]="emission.comment">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <p-panel header="Grading - Index: {{ig}}" *ngFor="let grading of emission.grading; let ig = index" [style]="{'margin-top': '10px'}">
+
+          <div class="form-row" *ngFor="let grading of emission.grading; let i = index">
+            <div class="form-group col-md-6">
+              <label>ID Catalogo:</label>
+              <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'emission', i)" [(ngModel)]="grading.idCatalog">
+            </div>
+          </div>
+
+        </p-panel>
+      </div>
+    </div>
+  </p-panel>
+</div>
+
+<p-growl [value]="msgs"></p-growl>
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Emission Info</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cancelado')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Deseja continuar com as alterações ?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="save('Salvo');c()">Salvar</button>
+  </div>
+</ng-template>
+
+<button class="btn btn-md btn-primary" style="margin-top: 10px;float: right" (click)="open(content)">Salvar</button>
+<button class="btn btn-md btn-outline-dark" style="margin-top: 10px;margin-right: 5px;float: right" (click)="cancel()">Cancelar</button>

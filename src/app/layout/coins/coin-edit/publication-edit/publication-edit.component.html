@@ -1,0 +1,50 @@
+<p-panel header="Publication" [style]="{'margin-top': '20px'}">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>ID Usuario:</label>
+      <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'publication.userId')" [(ngModel)]="publication.userId">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Nome:</label>
+      <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'publication.userName')" [(ngModel)]="publication.userName">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Data:</label>
+      <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'publication.date')" [(ngModel)]="publication.date">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Publicado:</label>
+      <br>
+      <p-inputSwitch onLabel="Sim" offLabel="Não" (ngModelChange)="onChange($event, 'publication.isPublished')" [(ngModel)]="publication.isPublished">
+      </p-inputSwitch>
+    </div>
+  </div>
+</p-panel>
+
+<p-growl [value]="msgs"></p-growl>
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Características</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cancelado')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Deseja continuar com as alterações ?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="save('Salvo');c()">Salvar</button>
+  </div>
+</ng-template>
+
+<button class="btn btn-md btn-primary" style="margin-top: 10px;float: right" (click)="open(content)">Salvar</button>
+<button class="btn btn-md btn-outline-dark" style="margin-top: 10px;margin-right: 5px;float: right" (click)="cancel()">Cancelar</button>

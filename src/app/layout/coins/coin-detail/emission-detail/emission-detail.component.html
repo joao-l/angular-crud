@@ -1,0 +1,52 @@
+<div class="ui-grid-row">
+  <div class="ui-grid-col-12" *ngFor="let ems of emissions">
+    <div *ngFor="let image of ems.image">
+      <img [src]="(image.smallSize | image) | async" style="max-height: 150px;" *ngIf="image">
+      <div class="ui-grid ui-grid-responsive ui-grid-pad">
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-12 label">
+            <b>Lado: </b>{{image.side}}
+          </div>
+        </div>
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-12 label">
+            <b>Source: </b>{{image.source}}
+          </div>
+        </div>
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-12 label">
+            <b>Source Mention: </b>{{image.sourceMention}}
+            <hr>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ui-grid ui-grid-responsive ui-grid-pad" *ngFor="let emission of emissions">
+  <hr>
+  <div class="ui-grid-row">
+    <div class="ui-grid-col-12 label">
+      <b>Ano de emissão: </b>{{emission.year}}
+    </div>
+  </div>
+  <div class="ui-grid-row">
+    <div class="ui-grid-col-12 label">
+      <b>Calendario: </b>{{emission.calendar}}
+    </div>
+  </div>
+  <div class="ui-grid-row">
+    <div class="ui-grid-col-12 label">
+      <b>Comentario: </b>{{emission.comment}}
+    </div>
+  </div>
+  <div class="ui-grid-row" *ngFor="let grading of emission.grading">
+    <div class="ui-grid-col-6 label">
+      <b>Acrônimo: </b>{{grading.acronym}}
+    </div>
+    <div class="ui-grid-col-6 label">
+      <b>Referência: </b>{{grading.reference}}
+    </div>
+  </div>
+</div>

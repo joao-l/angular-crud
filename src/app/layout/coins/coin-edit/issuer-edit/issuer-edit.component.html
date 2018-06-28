@@ -1,0 +1,41 @@
+<p-panel header="Issuer" [style]="{'margin-top': '20px'}">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>País:</label>
+      <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'shape')" [(ngModel)]="issuer.countryName">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Nome:</label>
+      <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'shape')" [(ngModel)]="issuer.issuerName">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Código:</label>
+      <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'shape')" [(ngModel)]="issuer.alpha2Code">
+    </div>
+  </div>
+</p-panel>
+
+<p-growl [value]="msgs"></p-growl>
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Emissor</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cancelado')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Deseja continuar com as alterações ?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="save('Salvo');c()">Salvar</button>
+  </div>
+</ng-template>
+
+<button class="btn btn-md btn-primary" style="margin-top: 10px;float: right" (click)="open(content)">Salvar</button>
+<button class="btn btn-md btn-outline-dark" style="margin-top: 10px;margin-right: 5px;float: right" (click)="cancel()">Cancelar</button>

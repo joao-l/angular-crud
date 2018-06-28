@@ -1,0 +1,30 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad">
+  <div class="ui-grid-row">
+    <div class="ui-grid-col-12 label">
+      <b>Publicado: </b>
+      <span *ngIf="publication.isPublished;else elseTemplate">Sim</span>
+      <ng-template #elseTemplate>Não</ng-template>
+    </div>
+  </div>
+</div>
+<div class="ui-grid ui-grid-responsive ui-grid-pad">
+  <div class="ui-grid-row">
+    <div class="ui-grid-col-12 label">
+      <b>ID Usuario: </b>{{publication.userId}}
+    </div>
+  </div>
+</div>
+<div class="ui-grid ui-grid-responsive ui-grid-pad">
+  <div class="ui-grid-row">
+    <div class="ui-grid-col-12 label">
+      <b>Nome: </b>{{publication.userName}}
+    </div>
+  </div>
+</div>
+<div class="ui-grid ui-grid-responsive ui-grid-pad">
+  <div class="ui-grid-row">
+    <div class="ui-grid-col-12 label">
+      <b>Data: </b>{{publication.date}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<div [@routerTransition]>
+  <app-page-header heading="Moedas" icon="fa fa-circle-o-notch"></app-page-header>
+
+  <div class="ui-widget-header" style="padding:10px 10px;border-bottom: 0 none">
+    <div class="input-group">
+      <input 
+        type="text" 
+        class="form-control form-control-sm" 
+        [(ngModel)]="terms" 
+        placeholder="Pesquisar moedas pelo nome:">
+
+      <span class="input-group-btn">
+        <button class="btn btn-primary" type="button" (click)="buscarItems()">Procurar</button>
+        <button class="btn btn-default" type="button" (click)="limparBusca()">Limpar Busca</button>
+      </span>
+    </div>
+  </div>
+
+  <p-dataTable 
+    [value]="coins" 
+    [rows]="10" 
+    [paginator]="true" 
+    expandableRows="true" 
+    selectionMode="single" 
+    [(selection)]="selectedCoin"
+    (onRowDblclick)="onRowDblclick($event)" 
+    [resizableColumns]="true" 
+    [scrollable]="true" 
+    [lazy]="true" 
+    (onLazyLoad)="loadData($event)"
+    [loading]="loading" 
+    [responsive]="true" 
+    [totalRecords]="totalRecords">
+
+    <p-header><b>Moedas Collectgram</b></p-header>
+
+    <p-column [resizable]="true" expander="true" [style]="{'width':'10%'}">
+      <ng-template pTemplate="header">Detalhes</ng-template>
+      <ng-template let-coin="rowData" pTemplate="body">
+        <img 
+          [src]="(coin.emissionInfo[0].image[0].smallSize | image) | async" 
+          style="max-height: 50px;" 
+          *ngIf="coin.emissionInfo[0].image.length > 0">
+      </ng-template>
+    </p-column>
+
+    <p-column [resizable]="true" [style]="{'width':'80%'}">
+      <ng-template pTemplate="header">Nome</ng-template>
+      <ng-template let-coin="rowData" pTemplate="body">
+        <b>{{coin.name}}</b>: {{coin.currency}}
+      </ng-template>
+    </p-column>
+
+    <ng-template let-coin pTemplate="rowexpansion">
+      <app-coin-detail [coin]="coin"></app-coin-detail>
+    </ng-template>
+  </p-dataTable>
+</div>

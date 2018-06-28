@@ -1,0 +1,57 @@
+<p-panel header="Removed" [style]="{'margin-top': '20px'}">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Removido:</label>
+      <br>
+      <p-inputSwitch onLabel="Sim" offLabel="Não" (ngModelChange)="onChange($event, 'isPublished')" [(ngModel)]="removed.isRemoved">
+      </p-inputSwitch>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Motivo:</label>
+      <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'comment')" [(ngModel)]="removed.reason">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>ID Usuario:</label>
+      <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'comment')" [(ngModel)]="removed.userId">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Nome:</label>
+      <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'comment')" [(ngModel)]="removed.userName">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Data:</label>
+      <input type="text" class="form-control form-control-sm" (ngModelChange)="onChange($event, 'comment')" [(ngModel)]="removed.date">
+    </div>
+  </div>
+</p-panel>
+
+<p-growl [value]="msgs"></p-growl>
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Características</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cancelado')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Deseja continuar com as alterações ?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="save('Salvo');c()">Salvar</button>
+  </div>
+</ng-template>
+
+<button class="btn btn-md btn-primary" style="margin-top: 10px;float: right" (click)="open(content)">Salvar</button>
+<button class="btn btn-md btn-outline-dark" style="margin-top: 10px;margin-right: 5px;float: right" (click)="cancel()">Cancelar</button>
